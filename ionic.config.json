@@ -1,5 +1,7 @@
 {
   "name": "app3_relevamiento",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

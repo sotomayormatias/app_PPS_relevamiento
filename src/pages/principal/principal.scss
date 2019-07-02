@@ -1,0 +1,28 @@
+page-principal {
+    .btnCamera{
+        height: 49% !important;
+    }
+
+    #btnLindo{
+        background: url("../assets/img/edificioLindo.jpg") no-repeat transparent;
+        background-size: contain;
+        background-position: center;
+        background-color: #488aff;
+    }
+
+    #btnFeo{
+        background: url("../assets/img/edificioFeo.jpg") no-repeat transparent;
+        background-size: contain;
+        background-position: center;
+        background-color: #444546;
+    }
+
+    button {
+        color: #FFFFFF;
+    }
+
+    button span {
+        padding-bottom: 220px;
+        font-size: 20px;
+    }
+}

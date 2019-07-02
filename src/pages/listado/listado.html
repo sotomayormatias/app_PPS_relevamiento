@@ -1,0 +1,39 @@
+<ion-content padding>
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let imagen of imagenes">
+      <ion-card class="card card-md">
+        <img [src]="imagen.urlCompleta">
+
+        <ion-card-content class="card-content card-content-md">
+          <ion-card-title class="card-title card-title-md">
+            {{imagen.usuario}}
+          </ion-card-title>
+
+          <p>
+            Votos: {{imagen.votos}}
+          </p>
+          <p>
+            {{imagen.fecha}}
+          </p>
+        </ion-card-content>
+
+        <ion-row class="row" no-padding="">
+          <ion-col class="col">
+            <button color="danger" (click)="votar(imagen.key, imagen.votos)"
+              class="disable-hover button button-md button-clear button-clear-md button-small button-small-md button-clear-md-danger"><span
+                class="button-inner">
+                <ion-icon name="star" role="img" class="icon icon-md ion-md-star" aria-label="star"></ion-icon>
+                Votar
+              </span>
+              <div class="button-effect"></div>
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>

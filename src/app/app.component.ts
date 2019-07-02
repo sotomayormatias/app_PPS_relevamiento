@@ -3,9 +3,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
+import { ListadoTabsPage } from '../pages/listado-tabs/listado-tabs';
+import { PrincipalPage } from "../pages/principal/principal";
+import { VotacionPage } from "../pages/votacion/votacion";
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -17,7 +22,7 @@ import { Settings } from '../providers';
 
     <ion-content>
       <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <button menuClose ion-item *ngFor="let p of pagesSideMenu" (click)="openPage(p)">
           {{p.title}}
         </button>
       </ion-list>
@@ -28,6 +33,10 @@ import { Settings } from '../providers';
 })
 export class MyApp {
   rootPage = FirstRunPage;
+  pagesSideMenu: Array<{ title: string, component: any }> =
+  [{ title: 'Principal', component: PrincipalPage },
+  { title: 'Votacion', component: VotacionPage },
+  { title: 'listado', component: ListadoTabsPage }];
 
   @ViewChild(Nav) nav: Nav;
 
@@ -53,6 +62,7 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.initTranslate();
+    firebase.initializeApp(FIREBASE_CONFIG);
   }
 
   initTranslate() {

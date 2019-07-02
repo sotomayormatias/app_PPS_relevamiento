@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>fotos feas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <button ion-button round (click)="tomarFoto()">Tomar foto</button>
+      <button ion-button round [disabled]="!hayFotos" [color]="hayFotos ? 'secondary' : 'light'" (click)="guardarFotos()">Enviar</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides>
+    <ion-slide *ngFor="let foto of captureDataUrl">
+      <img [src]="foto" *ngIf="captureDataUrl" />
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

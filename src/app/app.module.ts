@@ -8,10 +8,16 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { DeviceMotion } from "@ionic-native/device-motion";
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+import { PrincipalPage } from "../pages/principal/principal";
+import { VotacionPage } from "../pages/votacion/votacion";
+import { ListadoTabsPage } from '../pages/listado-tabs/listado-tabs';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -36,7 +42,10 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    VotacionPage,
+    PrincipalPage,
+    ListadoTabsPage 
   ],
   imports: [
     BrowserModule,
@@ -49,11 +58,15 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    VotacionPage,
+    PrincipalPage,
+    ListadoTabsPage
   ],
   providers: [
     Api,
@@ -62,6 +75,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    DeviceMotion,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

@@ -14,8 +14,13 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class WelcomePage {
 
+  splash = true;
   constructor(public navCtrl: NavController) { }
 
+  ionViewDidLoad() {
+    setTimeout(() => this.splash = false, 4000);
+  }
+  
   login() {
     this.navCtrl.push('LoginPage');
   }
